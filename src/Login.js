@@ -17,6 +17,7 @@ const [error, setError] = useState('')
       
     }catch{
       alert(error.message)
+      alert('error')
     }
 
   }
@@ -60,7 +61,8 @@ const [error, setError] = useState('')
     )
 }
 
-export default Login
+export default Login ;
+
 
 const styles = StyleSheet.create({
     container: {
