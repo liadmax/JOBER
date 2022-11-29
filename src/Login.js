@@ -5,11 +5,9 @@ import {firebase} from '../config'
 
 
 const Login = () => {
-const navigation = useNavigation()
-const [email, setEmail] = useState('')
-const [password, setPassword] = useState('')
-const [error, setError] = useState('')
-
+    const navigation = useNavigation()
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
 
   loginUser = async (email, password) => {
     try{

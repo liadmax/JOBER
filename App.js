@@ -1,6 +1,9 @@
-import { NavigationContainer } from "@react-navigation/native";
+
+  // **:)** -legend co0de
+  // Handle user state changes
+  import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import react , {useState ,useEffect} from "react";
+import React, {useState, useEffect} from 'react';
 import {firebase} from './config';
 
 import Login from "./src/Login";
@@ -11,113 +14,84 @@ import Header from "./Components/Header";
 const Stack = createStackNavigator();
 
 function App(){
-  const {initializing, setInitializing} = useState(true);
-  const {user, setUser} = useState(false);
-  // **:)** -legend co0de
-  // Handle user state changes
-  function onAuthStateChanged(user) { 
+  const [initializing, setInitializing] = useState(true);
+  const [user, setUser] = useState();
+
+  //Handle User State changes
+  function onAuthStateChanged(user){
     setUser(user);
-    if (initializing) setInitializing(false);
+    if(initializing) setInitializing(false);
   }
-  useEffect(() => {
-    const subscriber = firebase.auth().onAuthStateChanged(onAuthStateChanged);
-    return subscriber; // unsubscribe on unmount
-  }, []);
-  if (initializing) return null;
 
-  if (!user) {
-    return (
-      
-        <Stack.Navigator>
-          <Stack.Screen
-           name="Login"
-            component={Login}
-            options={{ 
-              headerTitle:() => <Header title="Login" />,
-              headerStyle: { 
-                backgroundColor: '#f4511e',
-                height: 80,
-                borderBottomLeftRadius: 30,
-                borderBottomRightRadius: 30,
-                shadowColor: '#000',
-                shadowOffset: { width: 0, height: 2 },
-                shadowOpacity: 0.25,
-                shadowRadius: 3.84,
-                elevation: 25
+useEffect(() =>{
+  const subscriber = firebase.auth().onAuthStateChanged(onAuthStateChanged);
+  return subscriber;
+}, []);
 
-              }
-              }}
-             />
-              <Stack.Screen
-           name="Register"
-            component={Register}
-            options={{ 
-              headerTitle:() => <Header title="Register" />,
-              headerStyle: { 
-                backgroundColor: '#f4511e',
-                height: 80,
-                borderBottomLeftRadius: 30,
-                borderBottomRightRadius: 30,
-                shadowColor: '#000',
-                shadowOffset: { width: 0, height: 2 },
-                shadowOpacity: 0.25,
-                shadowRadius: 3.84,
-                elevation: 25
+if (initializing) return null;
 
-              }
-              }}
-             />
-        </Stack.Navigator>
-      
-    );
-  }
-return ( 
-  <Stack.Navigator>
-  <Stack.Screen
-   name="Login"
-    component={Login}
-    options={{ 
-      headerTitle:() => <Header title="Login" />,
-      headerStyle: { 
-        backgroundColor: '#f4511e',
-        height: 80,
-        borderBottomLeftRadius: 30,
-        borderBottomRightRadius: 30,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 25
-
-      }
-      }}
-     />
+if(!user){
+  return (
+    <Stack.Navigator>
       <Stack.Screen
-   name="Dashboard"
-    component={Dashboard}
-    options={{ 
-      headerTitle:() => <Header title="Dashboard" />,
-      headerStyle: { 
-        backgroundColor: '#f4511e',
-        height: 80,
-        borderBottomLeftRadius: 30,
-        borderBottomRightRadius: 30,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 25
-
-      }
+      name="Login"
+      component={Login}
+      options={{
+        headerTitle: () => <Header name="Bug Ninza"/>,
+        headerStyle: {
+          height:150,
+          borderBottomLeftRadius:50,
+          borderBottomRightRadius:50,
+          backgroundColor:'#00e4d0',
+          shadowColor: '#000',
+          elevation:25
+        }
       }}
-     />
-</Stack.Navigator>
-    
-)
+      />
+
+<Stack.Screen
+      name="Register"
+      component={Register}
+      options={{
+        headerTitle: () => <Header name="Bug Ninza"/>,
+        headerStyle: {
+          height:150,
+          borderBottomLeftRadius:50,
+          borderBottomRightRadius:50,
+          backgroundColor:'#00e4d0',
+          shadowColor: '#000',
+          elevation:25
+        }
+      }}
+      />
+    </Stack.Navigator>
+  );
 }
 
-export default  () => {
-  return(
+return(
+  <Stack.Navigator>
+    <Stack.Screen
+      name="Dashboard"
+      component={Dashboard}
+      options={{
+        headerTitle: () => <Header name="Dashboard"/>,
+        headerStyle: {
+          height:150,
+          borderBottomLeftRadius:50,
+          borderBottomRightRadius:50,
+          backgroundColor:'#00e4d0',
+          shadowColor: '#000',
+          elevation:25
+        }
+      }}
+      />
+  </Stack.Navigator>
+);
+
+}
+
+export default () => {
+  return (
     <NavigationContainer>
       <App />
     </NavigationContainer>
