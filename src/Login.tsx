@@ -9,12 +9,12 @@ const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-  loginUser = async (email, password) => {
+  const loginUser = async (email, password) => {
     try{
       await firebase.auth().signInWithEmailAndPassword(email, password)
       
     }catch{
-      alert(error.message)
+      alert(Error)
       alert('error')
     }
 
@@ -48,7 +48,7 @@ const Login = () => {
                 </TouchableOpacity>
                 </View>
                 <View  style={styles.button}>
-                <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+                <TouchableOpacity onPress={() => navigation.navigate()}>
                 <Text style={styles.buttonText}>new here? register!</Text>
                 </TouchableOpacity>
                 </View>
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     },
     button: {
         width: '80%',
-        backgroundColor: '#f4511e',
+        backgroundColor: '#2dd4da',
         borderRadius: 10,
         height: 50,
         alignItems: 'center',
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     },
     buttonView:{
         width: '80%',
-        backgroundColor: '#f4511e',
+        backgroundColor: '#2dd4da',
         borderRadius: 10,
         height: 50,
         alignItems: 'center',

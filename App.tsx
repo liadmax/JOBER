@@ -37,7 +37,7 @@ if(!user){
       name="Login"
       component={Login}
       options={{
-        headerTitle: () => <Header name="Bug Ninza"/>,
+        headerTitle: () => <Header name="JOBER"/>,
         headerStyle: {
           height:150,
           borderBottomLeftRadius:50,
@@ -53,7 +53,7 @@ if(!user){
       name="Register"
       component={Register}
       options={{
-        headerTitle: () => <Header name="Bug Ninza"/>,
+        headerTitle: () => <Header name="JOBER"/>,
         headerStyle: {
           height:150,
           borderBottomLeftRadius:50,
