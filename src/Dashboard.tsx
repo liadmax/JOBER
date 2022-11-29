@@ -1,4 +1,4 @@
-import { Text, StyleSheet, SafeAreaView, TouchableOpacity} from 'react-native'
+import { View ,Text, StyleSheet, SafeAreaView, TouchableOpacity} from 'react-native'
 import React, {useState, useEffect} from 'react'
 import {firebase} from '../config'
 
@@ -20,20 +20,28 @@ const Dashboard = () => {
     }, [])
 
     return(
+        <>
         <SafeAreaView style={StyleSheet.container}>
             <Text style={{fontSize:20, fontWeight:'bold'}}>
-                Hello, {name.firstName}
+                HELLO {name.firstName}
             </Text>
             <TouchableOpacity
                 onPress={() => {firebase.auth().signOut()}}
                 style={styles.button}
                 >
                 <Text style={{fontSize:22, fontWeight: 'bold'}}>
-                    Sign Out
+                    SIGN OUT 
                 </Text>
             </TouchableOpacity>
         </SafeAreaView>
-  
+        <View style={styles.container}>
+            {/* create a deep profile*/}
+         
+            
+            
+
+        </View>
+  </>
   
   
   
@@ -55,7 +63,7 @@ const styles = StyleSheet.create({
         marginTop:50,
         height:70,
         width:250,
-        backgroundcolor:'#00e4d0',
+        backgroundColor:'#00e4d0',
         alignItems:'center',
         justifyContent:'center',
         borderRadius:50,
