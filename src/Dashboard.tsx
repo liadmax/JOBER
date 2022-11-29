@@ -36,7 +36,9 @@ const Dashboard = () => {
         </SafeAreaView>
         <View style={styles.container}>
             {/* create a deep profile*/}
-         
+            <Text style={{fontSize:20, fontWeight:'bold'}}>
+                create deep profile here {name.firstName}
+            </Text>
             
             
 
