@@ -1,6 +1,9 @@
 import { View ,Text, StyleSheet, SafeAreaView, TouchableOpacity} from 'react-native'
 import React, {useState, useEffect} from 'react'
 import {firebase} from '../config'
+import Profile from '../Components/Profile';
+import { useNavigation } from '@react-navigation/native'
+
 
 const Dashboard = () => {
     const [name, setName] =useState('')
@@ -13,7 +16,7 @@ const Dashboard = () => {
                 setName(snapshot.data())
             }
             else{
-                console.log('User does not exist')
+                alert('User does not exist')
             }
         })
 
@@ -23,22 +26,26 @@ const Dashboard = () => {
         <>
         <SafeAreaView style={StyleSheet.container}>
             <Text style={{fontSize:20, fontWeight:'bold'}}>
-                HELLO {name.firstName}
+                hello, {name.firstName}
             </Text>
             <TouchableOpacity
                 onPress={() => {firebase.auth().signOut()}}
                 style={styles.button}
                 >
                 <Text style={{fontSize:22, fontWeight: 'bold'}}>
-                    SIGN OUT 
+                    sign signOut
                 </Text>
             </TouchableOpacity>
         </SafeAreaView>
         <View style={styles.container}>
             {/* create a deep profile*/}
-            <Text style={{fontSize:20, fontWeight:'bold'}}>
-                create deep profile here {name.firstName}
-            </Text>
+            <TouchableOpacity onPress={() => useNavigation.Navigate('Profile')}>
+                <Text style={{fontSize:22, fontWeight: 'bold'}}>
+                create your profile here {name.firstName}
+                </Text>
+            </TouchableOpacity>
+            
+        
             
             
 
